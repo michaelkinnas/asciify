@@ -15,9 +15,6 @@ from PIL import Image
 
 rel_path = os.path.abspath(os.path.dirname(__file__))
 
-def map_values(old_min, old_max, new_min, new_max, value): 
-    return int(((new_max - new_min) * ((value - old_min) / (old_max - old_min))) + new_min)
-
 CHARACTER_SETS = {
     'symbols':"¶@ØÆMåBNÊßÔR#8Q&mÃ0À$GXZA5ñk2S%±3Fz¢yÝCJf1t7ªLc¿+?(r/¤²!*;^:,'.` ",
     'chars' :"$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|(1{[?-_+~<i!lI;:,^`'.",
@@ -44,7 +41,7 @@ for i in range(2, len(sys.argv)):
     for j in range(len(arg)):
         if arg[j] == '-':
             match arg[j+1]:
-                case 'n':
+                case 'p':
                     negative = False
                 case 'c':
                     char_set = CHARACTER_SETS[sys.argv[i+1]]
@@ -64,6 +61,9 @@ image = image.convert("L")
 image.thumbnail((max_width, max_width), Image.LANCZOS)
 
 image_width, image_heigh = image.size
+
+def map_values(old_min, old_max, new_min, new_max, value): 
+    return int(((new_max - new_min) * ((value - old_min) / (old_max - old_min))) + new_min)
 
 total_image = ''
 for j in range(1, image_heigh):
