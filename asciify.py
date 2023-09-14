@@ -76,9 +76,8 @@ for j in range(1, image_heigh):
             line_str += char_set[char_index]
     total_image += line_str + '\n'
 
-
 if len(output_file) > 0:
-    with open(output_file, 'w') as f:
+    with open(output_file, 'w', encoding='utf-8') as f:
         f.write(total_image)
 else:
     print(total_image)
