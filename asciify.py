@@ -1,14 +1,19 @@
-"""
+HELP = """
 Convert images to ascii character representation art.
 
+Usage: python3 asciify.py <image_file> [options]
+
 Options:
-    -n Print reversed values (negative).
-    -o <file name> Output text file (suppresses output to terminal).
-    -c <character set> Character set to use.
-    -w <width value> Number of characters per line.
+    -n                          Print reversed values (negative).
+    -o <file_name>              Output text file (suppresses output to terminal).
+    -c <character_set_name>     Character set to use.
+    -w <integer_value>          Number of characters per line.
+    -h                          Print this help and exit.
 """
 import sys, os
 from PIL import Image
+
+rel_path = os.path.abspath(os.path.dirname(__file__))
 
 def map_values(old_min, old_max, new_min, new_max, value): 
     return int(((new_max - new_min) * ((value - old_min) / (old_max - old_min))) + new_min)
@@ -28,9 +33,9 @@ char_set = CHARACTER_SETS['ascii1']
 output_file = ''
 max_width = 200
 
-image_path = sys.argv[1]
-rel_path = os.path.abspath(os.path.dirname(__file__))
-path = os.path.join(rel_path, image_path)
+if sys.argv[1] == '-h':
+    print(HELP)
+    exit(0)
 
 #Parameters handling
 for i in range(2, len(sys.argv)): 
@@ -45,14 +50,17 @@ for i in range(2, len(sys.argv)):
                 case 'o':
                     output_file = os.path.join(rel_path, sys.argv[i+1])
                 case 'w':
-                    max_width = int(sys.argv[i+1])
+                    max_width = int(sys.argv[i+1])               
                 case _:
                     print(f'Option "{arg[j+1]}" not recognized', file=sys.stderr)
                     exit(-1)
 
+image_path = sys.argv[1]
+path = os.path.join(rel_path, image_path)
+
 image = Image.open(path)
 image = image.convert("L")
-image.thumbnail((max_width,max_width), Image.LANCZOS)
+image.thumbnail((max_width, max_width), Image.LANCZOS)
 
 image_width, image_heigh = image.size
 
@@ -61,7 +69,7 @@ for j in range(1, image_heigh):
     line_str = ''
     for i in range(1, image_width):
         pixel_val = image.getpixel((i, j))
-        char_index = map_values(0,255,0,len(char_set)-1, pixel_val)
+        char_index = map_values(0, 255, 0, len(char_set)-1, pixel_val)
         if negative:
             line_str += char_set[-1 * char_index - 1]
         else:

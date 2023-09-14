@@ -8,14 +8,14 @@ You will need Python 3.
 To run the program navigate to where the asciify.py file is and type in your terminal:
 
 ```sh
-python3 asciify.py [<image_file>]
+python3 asciify.py <image_file> [options]
 ```
 
 The program will print in the terminal the ASCII character representation of the image.
 
 ## Options
 
-
+The options my be after the image file path parameter.
 
 ### Negative
 
@@ -33,7 +33,7 @@ The program will output a text file with the given name instead of being printed
 
 `-c <character_set_name>`
 
-Which character set to use. By default you can choose between 7 character sets. (In a future version you will be able to user your own also)
+Which character set to use. By default you can choose between 7 character sets. (In a future version you will be able to use your own in addition)
 
 ```
     ascii1      ¶@ØÆMåBNÊßÔR#8Q&mÃ0À$GXZA5ñk2S%±3Fz¢yÝCJf1t7ªLc¿+?(r/¤²!*;^:,'.` 
@@ -50,6 +50,22 @@ Which character set to use. By default you can choose between 7 character sets. 
 `-w <integer_value>`
 
 How many characters will be printed per line. Essentially the width of the image.
+
+### Help
+
+`-h`
+
+By using -h instead of a file name the program will print a help message.
+
+### Default options
+
+By default if no options are provided the following parameters are used and the output is printed to the terminal.
+
+`character_set: ascii1`
+
+`width: 200`
+
+`negative: false`
 
 ## Examples
 Input:
