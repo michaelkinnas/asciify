@@ -1,5 +1,5 @@
 HELP = """
-Convert images to ascii character representation art.
+Convert images to ascii-like character representation art.
 
 Usage: python3 asciify.py <image_file> [options]
 
@@ -19,19 +19,20 @@ def map_values(old_min, old_max, new_min, new_max, value):
     return int(((new_max - new_min) * ((value - old_min) / (old_max - old_min))) + new_min)
 
 CHARACTER_SETS = {
-    'ascii1':"¶@ØÆMåBNÊßÔR#8Q&mÃ0À$GXZA5ñk2S%±3Fz¢yÝCJf1t7ªLc¿+?(r/¤²!*;^:,'.` ",
-    'ascii2' :"$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,^`'.",
+    'symbols':"¶@ØÆMåBNÊßÔR#8Q&mÃ0À$GXZA5ñk2S%±3Fz¢yÝCJf1t7ªLc¿+?(r/¤²!*;^:,'.` ",
+    'chars' :"$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|(1{[?-_+~<i!lI;:,^`'.",
     'runic' : "ᛥᛤᛞᚥᚸᛰᛖᚻᚣᛄᚤᛒᚢᚱᛱᚷᚫᛪᚧᚬᚠᛏᚨᚰᚩᚮᚪᚳᚽᚿᛊᛁᛵᛍ᛬ᚲᛌ᛫",
     'box' : "╬╠╫╋║╉╩┣╦╂╳╇╈┠╚┃╃┻╅┳┡┢┹╀╧┱╙┗┞┇┸┋┯┰┖╲╱┎╘━┭┕┍┅╾│┬┉╰╭╸└┆╺┊─╌┄┈╴╶",
     'block' : "█▉▇▓▊▆▅▌▚▞▀▒▐▍▃▖▂░▁▏",
-    'geometrick' : "◙◘■▩●▦▣◚◛◕▨▧◉▤◐◒▮◍◑▼▪◤▬◗◭◖◈◎◮◊◫▰◄◯□▯▷▫▽◹△◁▸▭◅▵◌▱▹▿◠◃◦◟◞◜",
+    'geometric' : "◙◘■▩●▦▣◚◛◕▨▧◉▤◐◒▮◍◑▼▪◤▬◗◭◖◈◎◮◊◫▰◄◯□▯▷▫▽◹△◁▸▭◅▵◌▱▹▿◠◃◦◟◞◜",
     'hiragana' : "ぽぼゑぜぬあおゆぎゐはせぢがきぱびほげばゟぁたかぞぷれひずどらさでけぉちごえすゎにづぇとょついこぐうぅぃくっしへゞゝ゚゙",
+    'simple': "@#&$%{[!+;:-,. " 
 }
 
 negative = True
-char_set = CHARACTER_SETS['ascii1']
+char_set = CHARACTER_SETS['simple']
 output_file = ''
-max_width = 200
+max_width = 160
 
 if sys.argv[1] == '-h':
     print(HELP)

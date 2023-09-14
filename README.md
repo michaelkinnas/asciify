@@ -1,5 +1,5 @@
 # ASCIIfy
-Convert an image to ascii art
+Convert an image to ascii-like art.
 
 ## Usage
 
@@ -41,8 +41,9 @@ Which character set to use. By default you can choose between 7 character sets. 
     runic       ᛥᛤᛞᚥᚸᛰᛖᚻᚣᛄᚤᛒᚢᚱᛱᚷᚫᛪᚧᚬᚠᛏᚨᚰᚩᚮᚪᚳᚽᚿᛊᛁᛵᛍ᛬ᚲᛌ᛫
     box         ╬╠╫╋║╉╩┣╦╂╳╇╈┠╚┃╃┻╅┳┡┢┹╀╧┱╙┗┞┇┸┋┯┰┖╲╱┎╘━┭┕┍┅╾│┬┉╰╭╸└┆╺┊─╌┄┈╴╶
     block       █▉▇▓▊▆▅▌▚▞▀▒▐▍▃▖▂░▁▏
-    geometrick  ◙◘■▩●▦▣◚◛◕▨▧◉▤◐◒▮◍◑▼▪◤▬◗◭◖◈◎◮◊◫▰◄◯□▯▷▫▽◹△◁▸▭◅▵◌▱▹▿◠◃◦◟◞◜ 
+    geometric   ◙◘■▩●▦▣◚◛◕▨▧◉▤◐◒▮◍◑▼▪◤▬◗◭◖◈◎◮◊◫▰◄◯□▯▷▫▽◹△◁▸▭◅▵◌▱▹▿◠◃◦◟◞◜ 
     hiragana    ぽぼゑぜぬあおゆぎゐはせぢがきぱびほげばゟぁたかぞぷれひずどらさでけぉちごえすゎにづぇとょついこぐうぅぃくっしへゞゝ゚゙
+    simple      @#&$%{[!+;:-,. 
 ```
 
 ### Width
@@ -63,7 +64,7 @@ By default if no options are provided the following parameters are used and the 
 
 `character_set: ascii1`
 
-`width: 200`
+`width: 160`
 
 `negative: false`
 
