@@ -17,7 +17,7 @@ The program will print in the terminal the ASCII character representation of the
 
 The options my be after the image file path parameter.
 
-### Negative
+### Positive
 
 `-p`
 
