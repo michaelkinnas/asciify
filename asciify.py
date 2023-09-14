@@ -4,27 +4,25 @@ Convert images to ascii-like character representation art.
 Usage: python3 asciify.py <image_file> [options]
 
 Options:
-    -n                          Print reversed values (negative).
+    -p                          Print reversed values (positive).
     -o <file_name>              Output text file (suppresses output to terminal).
     -c <character_set_name>     Character set to use.
     -w <integer_value>          Number of characters per line.
-    -h                          Print this help and exit.
 """
 import sys, os
 from PIL import Image
 
-# rel_path = os.path.abspath(os.path.dirname(__file__))
 rel_path = os.getcwd() #use current working dir as relative path
 
 CHARACTER_SETS = {
     'symbols':"¶@ØÆMåBNÊßÔR#8Q&mÃ0À$GXZA5ñk2S%±3Fz¢yÝCJf1t7ªLc¿+?(r/¤²!*;^:,'.` ",
-    'chars' :"$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|(1{[?-_+~<i!lI;:,^`'.",
-    'runic' : "ᛥᛤᛞᚥᚸᛰᛖᚻᚣᛄᚤᛒᚢᚱᛱᚷᚫᛪᚧᚬᚠᛏᚨᚰᚩᚮᚪᚳᚽᚿᛊᛁᛵᛍ᛬ᚲᛌ᛫",
-    'box' : "╬╠╫╋║╉╩┣╦╂╳╇╈┠╚┃╃┻╅┳┡┢┹╀╧┱╙┗┞┇┸┋┯┰┖╲╱┎╘━┭┕┍┅╾│┬┉╰╭╸└┆╺┊─╌┄┈╴╶",
-    'block' : "█▉▇▓▊▆▅▌▚▞▀▒▐▍▃▖▂░▁▏",
-    'geometric' : "◙◘■▩●▦▣◚◛◕▨▧◉▤◐◒▮◍◑▼▪◤▬◗◭◖◈◎◮◊◫▰◄◯□▯▷▫▽◹△◁▸▭◅▵◌▱▹▿◠◃◦◟◞◜",
-    'hiragana' : "ぽぼゑぜぬあおゆぎゐはせぢがきぱびほげばゟぁたかぞぷれひずどらさでけぉちごえすゎにづぇとょついこぐうぅぃくっしへゞゝ゚゙",
-    'simple': "@#&$%{[!+;:-,. " 
+    'chars':"$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|(1{[?-_+~<i!lI;:,^`'.",
+    'runic':"ᛥᛤᛞᚥᚸᛰᛖᚻᚣᛄᚤᛒᚢᚱᛱᚷᚫᛪᚧᚬᚠᛏᚨᚰᚩᚮᚪᚳᚽᚿᛊᛁᛵᛍ᛬ᚲᛌ᛫",
+    'box':"╬╠╫╋║╉╩┣╦╂╳╇╈┠╚┃╃┻╅┳┡┢┹╀╧┱╙┗┞┇┸┋┯┰┖╲╱┎╘━┭┕┍┅╾│┬┉╰╭╸└┆╺┊─╌┄┈╴╶",
+    'block':"█▉▇▓▊▆▅▌▚▞▀▒▐▍▃▖▂░▁▏",
+    'geometric':"◙◘■▩●▦▣◚◛◕▨▧◉▤◐◒▮◍◑▼▪◤▬◗◭◖◈◎◮◊◫▰◄◯□▯▷▫▽◹△◁▸▭◅▵◌▱▹▿◠◃◦◟◞◜",
+    'hiragana':"ぽぼゑぜぬあおゆぎゐはせぢがきぱびほげばゟぁたかぞぷれひずどらさでけぉちごえすゎにづぇとょついこぐうぅぃくっしへゞゝ゚゙",
+    'simple':"@#&$%{[!+;:-,. " 
 }
 
 negative = True
@@ -34,7 +32,7 @@ max_width = 160
 
 if sys.argv[1] == '-h':
     print(HELP)
-    exit(0)
+    sys.exit(0)
 
 #Parameters handling
 for i in range(2, len(sys.argv)): 
@@ -52,7 +50,7 @@ for i in range(2, len(sys.argv)):
                     max_width = int(sys.argv[i+1])               
                 case _:
                     print(f'Option "{arg[j+1]}" not recognized', file=sys.stderr)
-                    exit(-1)
+                    sys.exit(-1)
 
 image_path = sys.argv[1]
 path = os.path.join(rel_path, image_path)
