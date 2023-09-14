@@ -35,7 +35,7 @@ The program will output a text file with the given name instead of being printed
 
 `-c <character_set_name>`
 
-Which character set to use. By default you can choose between 7 character sets. (In a future version you will be able to use your own in addition)
+Which character set to use. By default you can choose between 8 character sets. (In a future version you will be able to use your own in addition)
 
 ```
     symbols     ¶@ØÆMåBNÊßÔR#8Q&mÃ0À$GXZA5ñk2S%±3Fz¢yÝCJf1t7ªLc¿+?(r/¤²!*;^:,'.` 

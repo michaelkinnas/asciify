@@ -13,7 +13,8 @@ Options:
 import sys, os
 from PIL import Image
 
-rel_path = os.path.abspath(os.path.dirname(__file__))
+# rel_path = os.path.abspath(os.path.dirname(__file__))
+rel_path = os.getcwd() #use current working dir as relative path
 
 CHARACTER_SETS = {
     'symbols':"¶@ØÆMåBNÊßÔR#8Q&mÃ0À$GXZA5ñk2S%±3Fz¢yÝCJf1t7ªLc¿+?(r/¤²!*;^:,'.` ",
