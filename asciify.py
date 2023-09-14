@@ -2,10 +2,10 @@
 Convert images to ascii character representation art.
 
 Options:
-    -n Print reversed values (negative)
-    -o <file name> Output text file (suppresses output to terminal)
-    -c <character set> Character set to use
-    -w <width value> Number of character "pixels" width
+    -n Print reversed values (negative).
+    -o <file name> Output text file (suppresses output to terminal).
+    -c <character set> Character set to use.
+    -w <width value> Number of characters per line.
 """
 import sys, os
 from PIL import Image
@@ -23,7 +23,7 @@ CHARACTER_SETS = {
     'hiragana' : "ぽぼゑぜぬあおゆぎゐはせぢがきぱびほげばゟぁたかぞぷれひずどらさでけぉちごえすゎにづぇとょついこぐうぅぃくっしへゞゝ゚゙",
 }
 
-NEGATIVE = True
+negative = True
 char_set = CHARACTER_SETS['ascii1']
 output_file = ''
 max_width = 200
@@ -32,14 +32,14 @@ image_path = sys.argv[1]
 rel_path = os.path.abspath(os.path.dirname(__file__))
 path = os.path.join(rel_path, image_path)
 
-#Check for options
+#Parameters handling
 for i in range(2, len(sys.argv)): 
     arg = sys.argv[i]
     for j in range(len(arg)):
         if arg[j] == '-':
             match arg[j+1]:
                 case 'n':
-                    NEGATIVE = False
+                    negative = False
                 case 'c':
                     char_set = CHARACTER_SETS[sys.argv[i+1]]
                 case 'o':
@@ -52,9 +52,7 @@ for i in range(2, len(sys.argv)):
 
 image = Image.open(path)
 image = image.convert("L")
-
 image.thumbnail((max_width,max_width), Image.LANCZOS)
-# image.save(rel_path + "/LANCZOS.png")
 
 image_width, image_heigh = image.size
 
@@ -64,8 +62,8 @@ for j in range(1, image_heigh):
     for i in range(1, image_width):
         pixel_val = image.getpixel((i, j))
         char_index = map_values(0,255,0,len(char_set)-1, pixel_val)
-        if NEGATIVE:
-            line_str += char_set[char_index * -1 - 1]
+        if negative:
+            line_str += char_set[-1 * char_index - 1]
         else:
             line_str += char_set[char_index]
     total_image += line_str + '\n'
