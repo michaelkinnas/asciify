@@ -23,7 +23,7 @@ The options my be after the image file path parameter.
 
 The image will be printed using positive values. Usefull if you are using white background with dark characters in your terminal.
 
-By default negative is set to true and with the -p option the negative is set to false. The reason being that most people use dark themes with dark backgrounds in their terminals and text editors.
+By default the image is printed with negative values. The reason being that most people use dark themes with dark backgrounds in their terminals and text editors.
 
 ### Output file
 
@@ -35,7 +35,7 @@ The program will output a text file with the given name instead of being printed
 
 `-c <character_set_name>`
 
-Which character set to use. By default you can choose between 8 character sets. (In a future version you will be able to use your own in addition)
+Which character set to use. By default you can choose between 8 character sets.
 
 ```
     symbols     ¶@ØÆMåBNÊßÔR#8Q&mÃ0À$GXZA5ñk2S%±3Fz¢yÝCJf1t7ªLc¿+?(r/¤²!*;^:,'.` 
@@ -64,11 +64,9 @@ By using -h instead of a file name the program will print a help message.
 
 By default if no options are provided the following parameters are used and the output is printed to the terminal.
 
-`character_set: simple`
-
-`width: 160`
-
-`negative: true`
+- `character_set: simple`
+- `width: <original image width>`
+- `positive: False`
 
 ## Examples
 Input:
